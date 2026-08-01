@@ -1,5 +1,7 @@
 # ☁️ AWS Cloud Projects
 
+![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+
 > **A hands-on journey through core AWS services—from static hosting to containerized deployments.**
 
 ---

@@ -1,5 +1,7 @@
 # 🐳 Dockerized Nginx on Amazon EC2
 
+![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+
 > Deploying a containerized web application on an AWS EC2 instance using Docker and exposing it to the internet.
 
 ---

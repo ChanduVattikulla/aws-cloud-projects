@@ -1,5 +1,7 @@
 # ⚡ Task-3-Lambda-API-Gateway
 
+![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+
 A lightweight serverless API built with **AWS Lambda** and **API Gateway** that returns a JSON response through a publicly accessible endpoint.
 
 ---
