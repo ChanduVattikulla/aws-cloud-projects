@@ -60,15 +60,17 @@ Finally, the generated API URL was opened in the browser, successfully returning
 
 ## 📸 Screenshots
 
-```text
-images/lambda-function.png
+### Lambda Function
+![Lambda Function](./screenshots/lambda-function.png)
 
-images/api-gateway.png
+### API Gateway Configuration
+![API Gateway Configuration](./screenshots/api-gateway.png)
 
-images/test-response.png
+### Test Response
+![Test Response](./screenshots/test-response.png)
 
-images/live-endpoint.png
-```
+### Live Endpoint
+![Live Endpoint](./screenshots/live-endpoint.png)
 
 ---
 
