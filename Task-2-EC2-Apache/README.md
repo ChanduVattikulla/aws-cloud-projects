@@ -102,15 +102,14 @@ echo "<h1>Hello from Cloud VM</h1>" | sudo tee /var/www/html/index.html
 
 ## 📸 Screenshots
 
-```
-images/
-├── ec2-dashboard.png
-├── security-group.png
-├── ssh-terminal.png
-├── apache-status.png
-├── apache-default-page.png
-└── hello-from-cloud-vm.png
-```
+### EC2 Dashboard
+![EC2 Dashboard](./screenshots/ec2-dashboard.png)
+
+### Apache Status
+![Apache Status](./screenshots/apache-status.png)
+
+### Hello from Cloud VM
+![Hello from Cloud VM](./screenshots/hello-from-cloud-vm.png)
 
 ---
 
