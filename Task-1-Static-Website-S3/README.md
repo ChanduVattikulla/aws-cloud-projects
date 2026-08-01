@@ -2,9 +2,7 @@
 
 > A hands-on AWS project demonstrating how to host a static website using **Amazon S3**, configure public access securely, and publish it through the **S3 Static Website Endpoint**.
 
-<p align="center">
-  <img src="./images/aws-logo.png" alt="AWS Logo" width="140">
-</p>
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/AWS-S3-orange?style=for-the-badge&logo=amazonaws" />
