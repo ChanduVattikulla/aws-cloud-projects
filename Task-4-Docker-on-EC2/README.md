@@ -74,13 +74,14 @@ sudo docker ps
 
 ## 📸 Screenshots
 
-```text
-images/ec2-instance.png
-images/docker-installation.png
-images/docker-run.png
-images/docker-ps.png
-images/application-running.png
-```
+### Docker Installation
+![Docker Installation](./screenshots/docker-installation.png)
+
+### Docker Run
+![Docker Run](./screenshots/docker-run.png)
+
+### Application Running
+![Application Running](./screenshots/application-running.png)
 
 ---
 
