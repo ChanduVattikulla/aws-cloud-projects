@@ -1,223 +1,311 @@
-# ☁️ Deploying a Web Server on AWS EC2 with Apache
+# ☁️ Deploying a Web Server on AWS EC2
 
-> Launching a Linux server in the cloud, configuring secure access, and serving a custom webpage from scratch using Amazon EC2 and Apache.
+> From launching a cloud server to serving a custom webpage with Apache.
 
----
+<p align="center">
 
-## 📖 Overview
+![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?logo=amazonaws&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-Web%20Server-D22128?logo=apache&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-Ubuntu-FCC624?logo=linux&logoColor=black)
 
-After hosting a static website on Amazon S3, I wanted to understand what happens when **you are responsible for the server itself**.
-
-This project explores the compute side of AWS by provisioning an Ubuntu virtual machine, configuring network access, installing Apache, and deploying a simple webpage. Rather than relying on managed hosting, this time I built and managed the web server myself.
-
----
-
-## 🎯 Objective
-
-Create a publicly accessible web server on AWS that:
-
-- Launches an Ubuntu EC2 instance
-- Allows secure remote administration via SSH
-- Serves HTTP traffic over the internet
-- Hosts a custom **"Hello from Cloud VM"** webpage
-- Stays within the AWS Free Tier
+</p>
 
 ---
 
-## 🏗️ Architecture
+## ✨ Overview
+
+After deploying a **static website on Amazon S3**, I wanted to explore what happens when **I'm responsible for the server itself**.
+
+This project provisions an **Ubuntu EC2 instance**, secures it with **Security Groups**, installs **Apache**, and deploys a simple webpage that is accessible over the internet.
+
+---
+
+# 🏗 Architecture
 
 ```mermaid
 flowchart TD
-    A[Internet] --> B[Public IPv4 Address]
-    B --> C[EC2 Security Group]
-    C -->|SSH : 22| D[Ubuntu 24.04 EC2]
-    C -->|HTTP : 80| D
-    D --> E[Apache2 Web Server]
-    E --> F[index.html]
-    F --> G["Hello from Cloud VM"]
+
+A[🌍 Internet]
+    -->B[🌐 Public IPv4]
+
+B --> C[🛡 Security Group]
+
+C -->|22 SSH| D[☁️ EC2 Ubuntu]
+
+C -->|80 HTTP| D
+
+D --> E[🅰 Apache Web Server]
+
+E --> F[/var/www/html/index.html]
+
+F --> G["Hello from Cloud VM 🚀"]
 ```
 
 ---
 
-## ⚙️ Project Journey
+# 🚀 Deployment Journey
 
-### 🚀 Launching the Server
+```mermaid
+flowchart LR
 
-The project began by provisioning an Ubuntu 24.04 EC2 instance.
+A[Launch EC2]
+-->B[Configure Security Group]
 
-Although the original task referenced **t2.micro**, my AWS account currently provides **t3.micro** as the Free Tier eligible instance, so I used the newer generation while keeping everything within the Free Tier.
+B-->C[SSH into Ubuntu]
 
-A new SSH key pair was generated during launch to securely access the server.
+C-->D[Update Packages]
 
----
+D-->E[Install Apache]
 
-### 🔐 Securing the Instance
+E-->F[Apache Default Page]
 
-Before installing anything, I configured the instance's Security Group with only the ports required for the project.
+F-->G[Deploy Custom Page]
 
-| Port | Purpose |
-|------:|---------|
-| **22** | Remote administration via SSH |
-| **80** | Public HTTP access |
-
-This ensured the server could be managed remotely while remaining accessible as a web server.
+G-->H[Live Website]
+```
 
 ---
 
-### 💻 Connecting to the Cloud
+## ⚡ Project Flow
 
-Using Windows Terminal and the downloaded `.pem` key, I connected to the Ubuntu instance over SSH.
+```text
+🖥 Launch Ubuntu EC2
+          │
+          ▼
+🔐 Configure Security Group
+          │
+          ▼
+💻 Connect using SSH
+          │
+          ▼
+📦 Install Apache2
+          │
+          ▼
+🌐 Verify Default Apache Page
+          │
+          ▼
+✨ Replace with Custom Page
+          │
+          ▼
+🚀 Hello from Cloud VM
+```
 
-Seeing
+---
+
+# 🛠 AWS Configuration
+
+| Component | Configuration |
+|-----------|---------------|
+| Compute | Amazon EC2 |
+| Operating System | Ubuntu 24.04 LTS |
+| Instance Type | t3.micro (Free Tier Eligible) |
+| Web Server | Apache2 |
+| Storage | 8 GiB gp3 |
+| Firewall | Security Group |
+| SSH | Port 22 |
+| HTTP | Port 80 |
+
+---
+
+# 📖 Journey
+
+### ☁️ Provisioning Compute
+
+A new Ubuntu virtual machine was launched on Amazon EC2.
+
+> 💡 Although the original task mentioned **t2.micro**, my AWS account currently provides **t3.micro** as the Free Tier eligible instance, so that was used instead.
+
+---
+
+### 🔒 Networking
+
+A Security Group was configured with only the required inbound rules.
+
+| Port | Purpose | Status |
+|------|----------|--------|
+| 22 | SSH | ✅ |
+| 80 | HTTP | ✅ |
+
+---
+
+### 💻 Remote Access
+
+Connected securely using SSH from **Windows Terminal**.
+
+```bash
+ssh -i mywebserver-key.pem ubuntu@<Public-IP>
+```
+
+Successfully reaching
 
 ```bash
 ubuntu@ip-xxx-xx-xx-xx:~$
 ```
 
-confirmed that I was now working directly inside a Linux machine running in AWS.
+confirmed remote access was working.
 
 ---
 
-### 📦 Preparing the Server
+### 📦 Server Setup
 
-Before installing Apache, I updated the package index and upgraded existing packages to ensure the system was up to date.
+Prepared Ubuntu and installed Apache.
 
 ```bash
 sudo apt update
 sudo apt upgrade -y
-```
-
----
-
-### 🌐 Installing Apache
-
-Next came the actual web server.
-
-```bash
 sudo apt install apache2 -y
 ```
 
-Once installed, Apache was started and configured to automatically start whenever the instance boots.
+Started Apache and enabled it during boot.
 
 ```bash
 sudo systemctl start apache2
 sudo systemctl enable apache2
 ```
 
-A quick status check confirmed everything was running successfully.
+Verified the service.
 
 ```bash
 sudo systemctl status apache2
 ```
 
----
-
-### 🎉 The First Success
-
-Before changing anything, I visited the instance's Public IPv4 address.
-
-Instead of an error page, the browser displayed the familiar **Apache2 Ubuntu Default Page**.
-
-That small moment confirmed that:
-
-- the EC2 instance was reachable,
-- Apache was installed correctly,
-- networking was configured properly,
-- and HTTP traffic was flowing exactly as expected.
+```
+● apache2.service
+Active: active (running) ✅
+```
 
 ---
 
-### ✨ Deploying the Custom Page
+### 🌐 First Verification
 
-With the infrastructure verified, I replaced Apache's default homepage with a simple custom page.
+Before deploying my own page, I opened the server's Public IPv4 address.
+
+Instead of an error, the **Apache Default Page** appeared.
+
+That immediately confirmed:
+
+- ✅ EC2 was reachable
+- ✅ Apache was running
+- ✅ HTTP traffic worked
+- ✅ Security Group was configured correctly
+
+---
+
+### ✨ Deploying the Website
+
+The default Apache homepage was replaced with a custom page.
 
 ```bash
 echo "<h1>Hello from Cloud VM</h1>" | sudo tee /var/www/html/index.html
 ```
 
-Refreshing the browser immediately displayed the new page, confirming that the deployment was complete.
+Refreshing the browser displayed:
+
+# Hello from Cloud VM 🚀
+
+Mission accomplished.
 
 ---
 
-### 💰 Thinking Beyond the Task
+# 📸 Screenshots
 
-After documenting the project, I chose to **stop the EC2 instance** instead of leaving it running indefinitely.
-
-For a portfolio project, high-quality documentation and screenshots provide long-term value while avoiding unnecessary Free Tier usage.
-
----
-
-## 📸 Screenshots
-
-> Replace these placeholders with your own screenshots.
-
-```
-images/ec2-dashboard.png
-images/security-group.png
-images/ssh-terminal.png
-images/apache-status.png
-images/apache-default-page.png
-images/hello-from-cloud-vm.png
-```
+| Stage | Preview |
+|--------|---------|
+| EC2 Running | `images/ec2-dashboard.png` |
+| Security Group | `images/security-group.png` |
+| SSH Session | `images/ssh-terminal.png` |
+| Apache Status | `images/apache-status.png` |
+| Default Apache Page | `images/apache-default-page.png` |
+| Final Website | `images/hello-from-cloud-vm.png` |
 
 ---
 
-## 🛠 AWS Services Used
+# 📊 Deployment Summary
 
-| Service | Purpose |
-|---------|---------|
-| **Amazon EC2** | Virtual machine hosting |
-| **Ubuntu 24.04 LTS** | Operating system |
-| **Security Groups** | Network firewall |
-| **Apache2** | Web server |
-| **SSH** | Secure remote access |
-| **Amazon VPC** | Default networking |
-| **Amazon EBS** | Root storage volume |
+| Step | Status |
+|-------|--------|
+| EC2 Provisioned | ✅ |
+| SSH Connected | ✅ |
+| Security Group Configured | ✅ |
+| Apache Installed | ✅ |
+| Apache Running | ✅ |
+| Default Page Verified | ✅ |
+| Custom Page Deployed | ✅ |
+| Public Website Accessible | ✅ |
 
 ---
 
-## 💡 Challenges & Solutions
+# 💡 Challenges
 
 | Challenge | Solution |
 |-----------|----------|
-| Task instructions referenced `t2.micro`, while AWS offered `t3.micro` as the Free Tier option. | Used the current Free Tier eligible instance without changing the overall deployment process. |
-| Needed to verify whether Apache or networking was causing issues. | Opened the Public IP before customization and confirmed the default Apache page loaded successfully. |
-| Wanted to preserve Free Tier usage after completing the project. | Documented the deployment thoroughly and stopped the instance after collecting screenshots. |
+| Free Tier no longer offered `t2.micro` | Used the current Free Tier eligible `t3.micro` |
+| Wanted to verify infrastructure before deployment | Confirmed the Apache default page first |
+| Portfolio vs AWS cost | Captured screenshots, documented everything, then stopped the instance to preserve Free Tier usage |
 
 ---
 
-## 📚 Key Learnings
+# 📚 What I Learned
 
-- The difference between **object storage (S3)** and **compute (EC2)**.
-- How Security Groups act as a virtual firewall.
-- Connecting securely to Linux servers using SSH.
-- Installing and managing services with `apt` and `systemctl`.
-- How Apache serves content from `/var/www/html`.
-- The importance of verifying infrastructure before making application changes.
-- Why balancing live demos with cloud cost management matters when building a portfolio.
+```text
+✓ Provisioning cloud virtual machines
+
+✓ Understanding Security Groups
+
+✓ Connecting via SSH
+
+✓ Installing software on Linux
+
+✓ Managing services using systemctl
+
+✓ Hosting websites with Apache
+
+✓ Verifying deployments before customization
+
+✓ Balancing cloud resources with Free Tier limits
+```
 
 ---
 
-## 🚀 Final Outcome
+# 🚀 Final Outcome
 
-By the end of this project, I had successfully:
+```text
+Internet
+    │
+    ▼
+Public IP
+    │
+    ▼
+Ubuntu EC2
+    │
+    ▼
+Apache2
+    │
+    ▼
+Hello from Cloud VM 🎉
+```
 
-- ✅ Provisioned an Ubuntu EC2 instance
-- ✅ Configured secure network access
-- ✅ Connected remotely using SSH
-- ✅ Installed and configured Apache2
-- ✅ Verified the default Apache deployment
-- ✅ Published a custom webpage
-- ✅ Documented the project while staying within the AWS Free Tier
+The project successfully transformed a freshly launched Ubuntu EC2 instance into a publicly accessible web server using Apache while remaining entirely within the AWS Free Tier.
 
-This project strengthened my understanding of how cloud servers are provisioned, secured, and transformed into publicly accessible web applications—one of the core building blocks of cloud infrastructure.
+---
+
+## ⭐ Repository Highlights
+
+- ✅ Amazon EC2
+- ✅ Ubuntu 24.04 LTS
+- ✅ Apache2 Web Server
+- ✅ SSH Administration
+- ✅ Security Groups
+- ✅ Cloud Networking
+- ✅ AWS Free Tier Friendly
 
 ---
 
 <div align="center">
 
-**Built with AWS EC2 • Ubuntu • Apache2**
+### Thanks for visiting! 👋
 
-⭐ If you found this project interesting, feel free to explore the repository.
+If you enjoyed this project, consider giving it a ⭐.
 
 </div>
