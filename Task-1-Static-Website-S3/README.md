@@ -130,15 +130,20 @@ Task1-S3-Static-Website/
 
 ## 📸 Screenshots
 
-| Screenshot | Preview |
-|------------|---------|
-| S3 Bucket Created | `./screenshots/bucket-created.png` |
-| Website Files Uploaded | `./screenshots/upload-files.png` |
-| Static Website Hosting Enabled | `./screenshots/static-hosting.png` |
-| Bucket Policy | `./screenshots/bucket-policy.png` |
-| Live Website | `./screenshots/live-website.png` |
+### S3 Bucket Created
+![S3 Bucket Created](./screenshots/bucket-created.png)
 
-> Replace the placeholder paths with your screenshots after uploading them.
+### Website Files Uploaded
+![Website Files Uploaded](./screenshots/upload-files.png)
+
+### Static Website Hosting Enabled
+![Static Website Hosting Enabled](./screenshots/static-hosting.png)
+
+### Bucket Policy
+![Bucket Policy](./screenshots/bucket-policy.png)
+
+### Live Website
+![Live Website](./screenshots/live-website.png)
 
 ---
 
