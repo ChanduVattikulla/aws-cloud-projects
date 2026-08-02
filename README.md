@@ -1,139 +1,87 @@
 # ☁️ AWS Cloud Projects
 
+<p align="center">
+
 ![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![GitHub](https://img.shields.io/badge/Projects-4-success?style=for-the-badge)
+![Status](https://img.shields.io/badge/Hands--On-Learning-orange?style=for-the-badge)
 
-> **A hands-on journey through core AWS services—from static hosting to containerized deployments.**
+</p>
+
+<p align="center">
+<b>Learning AWS by building.</b><br>
+A collection of beginner-friendly cloud projects created while exploring core AWS services through hands-on experimentation.
+</p>
 
 ---
 
-## 📈 Learning Journey
+## 🚀 Learning Journey
+
+<div align="center">
 
 ```text
-                 AWS Cloud Journey
-
-   🌐 S3
-      │
-      ▼
- 🖥️ EC2 + Apache
-      │
-      ▼
- ⚡ Lambda + API Gateway
-      │
-      ▼
- 🐳 Docker on EC2
+🌐 Amazon S3 ─────────▶ 🖥️ Amazon EC2 ─────────▶ ⚡ Lambda + API Gateway ─────────▶ 🐳 Docker on EC2
 ```
 
----
-
-## 🗺️ Project Roadmap
-
-| Project              | Architecture                           | Details                               |
-| -------------------- | -------------------------------------- | ------------------------------------- |
-| **① Static Website** | `👤 → 🌐 S3 → Website`                 | [View →](./Task-1-Static-Website-S3)  |
-| **② Cloud VM**       | `👤 → EC2 → Ubuntu → Apache`           | [View →](./Task-2-EC2-Apache)         |
-| **③ Serverless API** | `Client → API Gateway → Lambda → JSON` | [View →](./Task-3-Lambda-API-Gateway) |
-| **④ Containers**     | `👤 → EC2 → Docker → Nginx`            | [View →](./Task-4-Docker-on-EC2)      |
+</div>
 
 ---
 
-## 🏗️ Architectures
+# 📂 Projects
 
-### 🌐 Project 1
+| 🌐 Static Website Hosting | 🖥️ Apache on EC2 |
+|:-------------------------:|:----------------:|
+| Deploy a static website using Amazon S3. | Launch an EC2 instance and host a website with Apache. |
+| **Services:** S3, IAM | **Services:** EC2, Security Groups, Apache |
+| ➜ **[Open Project](./Task-1-Static-Website-S3)** | ➜ **[Open Project](./Task-2-EC2-Apache)** |
 
-```text
-Browser
-   │
-   ▼
-Amazon S3
-   │
-   ▼
-Static Website
-```
-
----
-
-### 🖥️ Project 2
-
-```text
-Browser
-   │
-   ▼
-Amazon EC2
-   │
-   ▼
-Ubuntu
-   │
-   ▼
-Apache
-```
+| ⚡ Serverless REST API | 🐳 Docker on EC2 |
+|:----------------------:|:----------------:|
+| Build a serverless API using Lambda & API Gateway. | Deploy a Dockerized application on an EC2 instance. |
+| **Services:** Lambda, API Gateway | **Services:** EC2, Docker |
+| ➜ **[Open Project](./Task-3-Lambda-API-Gateway)** | ➜ **[Open Project](./Task-4-Docker-on-EC2)** |
 
 ---
 
-### ⚡ Project 3
+# 🧰 Technology Stack
 
-```text
-Client
-   │
-   ▼
-API Gateway
-   │
-   ▼
-Lambda
-   │
-   ▼
-JSON Response
-```
+<div align="center">
+
+| Cloud | Compute | Serverless | Containers | Linux |
+|:-----:|:-------:|:----------:|:----------:|:-----:|
+| Amazon S3 | Amazon EC2 | AWS Lambda | Docker | Ubuntu |
+| IAM | Apache | API Gateway | Nginx | Bash |
+
+</div>
 
 ---
 
-### 🐳 Project 4
+# 📷 AWS Console
 
-```text
-Browser
-   │
-   ▼
-Amazon EC2
-   │
-   ▼
-Docker
-   │
-   ▼
-Nginx
-```
+| IAM User | Billing Dashboard |
+|:---------:|:----------------:|
+| ![](./screenshots/IAM_User.png) | ![](./screenshots/Budget&Billing_AWS_Freetier.png) |
 
 ---
 
-## 🧰 Stack
+# 🎯 What You'll Find
 
-```text
-AWS
-├── S3
-├── EC2
-├── IAM
-├── Lambda
-└── API Gateway
+✔️ Step-by-step implementation
 
-Linux
-├── Ubuntu
-├── Apache
-├── Docker
-└── Nginx
-```
+✔️ AWS architecture diagrams
 
----
+✔️ Screenshots from the AWS Console
 
-## 📷 AWS Console Screenshots
+✔️ Deployment process
 
-### IAM User Overview
-![IAM User Overview](./screenshots/IAM_User.png)
-
-### AWS Free Tier Billing
-![AWS Free Tier Billing](./screenshots/Budget&Billing_AWS_Freetier.png)
+✔️ Key learnings and troubleshooting notes
 
 ---
 
 <div align="center">
 
-**Learn → Build → Deploy → Scale 🚀**
+### ⭐ Every project in this repository represents a small step toward understanding AWS through practical experimentation.
+
+**Learn • Build • Break • Fix • Repeat 🚀**
 
 </div>
