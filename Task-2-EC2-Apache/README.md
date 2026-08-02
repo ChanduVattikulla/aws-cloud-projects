@@ -1,92 +1,100 @@
-# ☁️ Deploy a Web Server on AWS EC2
-
-> Provisioning an Ubuntu virtual machine, configuring secure access, and deploying a web server with Apache.
+# 🖥️ Deploy a Web Server on AWS EC2
 
 <p align="center">
 
-![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?logo=amazonaws\&logoColor=white)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu\&logoColor=white)
-![Apache](https://img.shields.io/badge/Apache2-Web_Server-D22128?logo=apache\&logoColor=white)
-![Free Tier](https://img.shields.io/badge/AWS-Free_Tier-success)
+![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-Web_Server-D22128?style=for-the-badge&logo=apache&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
 </p>
 
----
-
-## 📖 Overview
-
-Unlike static website hosting on S3, this project explores the **compute** side of AWS by deploying a Linux virtual machine, configuring networking, installing Apache, and serving a custom webpage over the internet.
+> A hands-on AWS project demonstrating how to launch an Ubuntu EC2 instance, configure secure access, and deploy a web server using Apache.
 
 ---
 
-## 🏗️ Architecture
-
-```mermaid
-flowchart LR
-    A[Internet] --> B[Public IP]
-    B --> C[Security Group]
-    C -->|SSH 22| D[Ubuntu EC2]
-    C -->|HTTP 80| D
-    D --> E[Apache2]
-    E --> F[Custom Website]
-```
-
----
-
-## 🚀 Deployment Journey
-
-```mermaid
-flowchart LR
-    A[Launch EC2]
-    --> B[Configure Security Group]
-    --> C[SSH Access]
-    --> D[Install Apache]
-    --> E[Verify Default Page]
-    --> F[Deploy Custom Page]
-    --> G[Completed]
-```
-
----
-
-## ⚙️ AWS Configuration
-
-| Component  | Value                         |
-| ---------- | ----------------------------- |
-| Service    | Amazon EC2                    |
-| OS         | Ubuntu 24.04 LTS              |
-| Instance   | t3.micro (Free Tier Eligible) |
-| Web Server | Apache2                       |
-| Storage    | 8 GiB gp3                     |
-| SSH        | Port 22                       |
-| HTTP       | Port 80                       |
-
----
-
-## 🧩 What Happened
+# 🚀 Project Flow
 
 ```text
-☁️ Launched an Ubuntu EC2 instance
-        │
-        ▼
-🔒 Configured Security Group
-        │
-        ▼
-💻 Connected via SSH
-        │
-        ▼
-📦 Installed Apache2
-        │
-        ▼
-🌐 Verified Apache Default Page
-        │
-        ▼
-✨ Replaced it with
-   "Hello from Cloud VM"
+Launch EC2
+     │
+     ▼
+Configure Security Group
+     │
+     ▼
+Connect via SSH
+     │
+     ▼
+Install Apache
+     │
+     ▼
+Deploy Website
 ```
 
 ---
 
-## 💻 Commands Used
+# ✨ Highlights
+
+- ✅ Ubuntu EC2 instance deployed
+- ✅ Apache Web Server installed
+- ✅ SSH & HTTP access configured
+- ✅ Custom webpage hosted successfully
+- ✅ Completed using AWS Free Tier
+
+---
+
+# ☁️ AWS Services
+
+| Service | Purpose |
+|:--------:|---------|
+| Amazon EC2 | Virtual Machine |
+| Security Group | Network Firewall |
+| EBS | Root Storage |
+| VPC | Networking |
+| Apache2 | Web Server |
+
+---
+
+# 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    A[🌍 Internet]
+    --> B[🔒 Security Group]
+
+    B -->|SSH :22| C[🖥️ Ubuntu EC2]
+    B -->|HTTP :80| C
+
+    C --> D[🌐 Apache Web Server]
+    D --> E[💻 Custom Website]
+```
+
+---
+
+# 📂 Deployment Workflow
+
+| Step | Description |
+|------|-------------|
+| **1️⃣** | Launch an Ubuntu EC2 instance |
+| **2️⃣** | Configure Security Group (SSH & HTTP) |
+| **3️⃣** | Connect using SSH |
+| **4️⃣** | Install and start Apache |
+| **5️⃣** | Replace the default page with a custom webpage |
+
+---
+
+# 💻 Commands Used
+
+```bash
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl start apache2
+echo "<h1>Hello from Cloud VM</h1>" | sudo tee /var/www/html/index.html
+```
+
+<details>
+<summary><b>View Complete Command History</b></summary>
 
 ```bash
 sudo apt update
@@ -98,86 +106,37 @@ sudo systemctl status apache2
 echo "<h1>Hello from Cloud VM</h1>" | sudo tee /var/www/html/index.html
 ```
 
----
-
-## 📸 Screenshots
-
-### EC2 Dashboard
-![EC2 Dashboard](./screenshots/ec2-dashboard.png)
-
-### Apache Status
-![Apache Status](./screenshots/apache-status.png)
-
-### Hello from Cloud VM
-![Hello from Cloud VM](./screenshots/hello-from-cloud-vm.png)
+</details>
 
 ---
 
-## 🛠 Services Used
+# 📸 Project Gallery
 
-| AWS Service    | Purpose               |
-| -------------- | --------------------- |
-| EC2            | Virtual Machine       |
-| Security Group | Firewall              |
-| EBS            | Root Storage          |
-| VPC            | Networking            |
-| SSH            | Remote Administration |
-| Apache2        | Web Server            |
+| EC2 Dashboard | Apache Running |
+|:-------------:|:--------------:|
+| ![](./screenshots/ec2-dashboard.png) | ![](./screenshots/apache-status.png) |
 
----
-
-## 💡 Challenges
-
-| Challenge                                          | Solution                                                        |
-| -------------------------------------------------- | --------------------------------------------------------------- |
-| Free Tier offered `t3.micro` instead of `t2.micro` | Used the current Free Tier eligible instance                    |
-| Needed to verify networking                        | Confirmed the default Apache page before customization          |
-| Wanted to save Free Tier hours                     | Collected screenshots and stopped the instance after completion |
+| Live Website |
+|:------------:|
+| ![](./screenshots/hello-from-cloud-vm.png) |
 
 ---
 
-## 📚 Key Learnings
+# 📚 Key Learnings
 
-* Provisioning cloud virtual machines
-* Connecting securely with SSH
-* Configuring Security Groups
-* Installing and managing Apache
-* Serving a website from Linux
-* Verifying deployments before customization
-* Managing AWS resources responsibly
-
----
-
-## ✅ Final Outcome
-
-* ✔ Ubuntu EC2 instance deployed
-* ✔ Apache2 installed and running
-* ✔ HTTP access configured
-* ✔ Custom **Hello from Cloud VM** webpage deployed
-* ✔ Successfully completed within AWS Free Tier
-
----
-
-## 📷 Final Result
-
-```text
-Internet
-   │
-Public IP
-   │
-Ubuntu EC2
-   │
-Apache2
-   │
-Hello from Cloud VM 🚀
-```
+- Provisioning virtual machines on AWS
+- Connecting securely using SSH
+- Configuring Security Groups
+- Installing and managing Apache
+- Hosting a website on Linux
+- Understanding the fundamentals of AWS networking
 
 ---
 
 <div align="center">
 
-**Built with ❤️ using AWS EC2, Ubuntu & Apache**
+### ⭐ My first compute-based AWS project using Amazon EC2.
 
-⭐ *If you found this project interesting, consider giving it a star.*
+**Launch → Secure → Deploy 🚀**
 
 </div>

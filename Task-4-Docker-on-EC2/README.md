@@ -1,59 +1,109 @@
-# 🐳 Dockerized Nginx on Amazon EC2
+# 🐳 Deploy an Nginx Container on AWS EC2
 
-![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+<p align="center">
 
-> Deploying a containerized web application on an AWS EC2 instance using Docker and exposing it to the internet.
+![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-Web_Server-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
----
+</p>
 
-## 🚀 Overview
-
-This project demonstrates a complete Docker deployment workflow on AWS. An Ubuntu EC2 instance was configured with Docker, an official Nginx container was deployed, and the application was made publicly accessible through the instance's public IP.
-
-The goal was to move from a traditional VM deployment to a modern containerized approach while keeping the setup simple, reproducible, and cloud-native.
-
----
-
-## 🎯 Goal
-
-* Deploy Docker on an Amazon EC2 Ubuntu instance
-* Run an Nginx container
-* Expose the container over HTTP
-* Verify the deployment through a public browser
+> A hands-on AWS project demonstrating how to deploy a Dockerized Nginx web server on an Amazon EC2 instance and expose it to the internet.
 
 ---
 
-## 🏗️ Architecture
+# 🚀 Project Flow
 
-```mermaid
-flowchart LR
-    U[User Browser]
-    EC2[Amazon EC2<br/>Ubuntu]
-    D[Docker Engine]
-    C[Nginx Container]
-    W[Web Application]
-
-    U -->|HTTP| EC2
-    EC2 --> D
-    D --> C
-    C --> W
+```text
+Launch EC2
+      │
+      ▼
+Install Docker
+      │
+      ▼
+Pull Nginx Image
+      │
+      ▼
+Run Docker Container
+      │
+      ▼
+Access via Browser
 ```
 
 ---
 
-## ⚙️ Project Journey
+# ✨ Highlights
 
-Instead of installing a web server directly on the virtual machine, I deployed it as a Docker container.
-
-The EC2 instance from a previous project was reused, updated, and prepared for container workloads. After installing Docker, I started and enabled the Docker service, pulled the official **Nginx** image, and launched it with port **80** mapped to the EC2 instance.
-
-During deployment, Docker couldn't bind to port **80** because Apache from an earlier project was already using it. After stopping Apache, I recreated the container and successfully deployed the application.
-
-The deployment was verified by checking the running container with `docker ps` and opening the EC2 Public IPv4 address in a browser, which displayed the default **Welcome to nginx!** page.
+- ✅ Docker installed on Ubuntu EC2
+- ✅ Official Nginx container deployed
+- ✅ HTTP port exposed publicly
+- ✅ Application verified in browser
+- ✅ Built using AWS Free Tier
 
 ---
 
-## 💻 Key Commands
+# ☁️ Technologies Used
+
+| Service | Purpose |
+|:--------:|---------|
+| Amazon EC2 | Virtual Machine |
+| Ubuntu | Operating System |
+| Docker Engine | Container Runtime |
+| Nginx | Web Server |
+| SSH | Remote Administration |
+
+---
+
+# 🏗️ Architecture
+
+```mermaid
+flowchart LR
+
+A[🌍 Internet]
+--> B[🖥️ Amazon EC2]
+
+B --> C[🐳 Docker Engine]
+
+C --> D[📦 Nginx Container]
+
+D --> E[🌐 Web Application]
+
+```
+
+---
+
+# 📂 Deployment Workflow
+
+| Step | Description |
+|------|-------------|
+| **1️⃣** | Launch or reuse an Ubuntu EC2 instance |
+| **2️⃣** | Install Docker Engine |
+| **3️⃣** | Pull the official Nginx image |
+| **4️⃣** | Run the container with port **80** exposed |
+| **5️⃣** | Verify deployment using the browser |
+
+---
+
+# 💻 Key Commands
+
+```bash
+sudo apt update -y
+sudo apt install docker.io -y
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo systemctl stop apache2
+
+sudo docker run -d -p 80:80 --name my-web-server nginx
+
+sudo docker ps
+```
+
+<details>
+
+<summary><b>View Complete Command History</b></summary>
 
 ```bash
 sudo apt update -y
@@ -72,48 +122,37 @@ sudo docker run -d -p 80:80 --name my-web-server nginx
 sudo docker ps
 ```
 
----
-
-## 📸 Screenshots
-
-### Docker Installation
-![Docker Installation](./screenshots/docker-installation.png)
-
-### Docker Run
-![Docker Run](./screenshots/docker-run.png)
-
-### Application Running
-![Application Running](./screenshots/application-running.png)
+</details>
 
 ---
 
-## 🛠️ Technologies Used
+# 📸 Project Gallery
 
-| Technology       | Purpose               |
-| ---------------- | --------------------- |
-| Amazon EC2       | Virtual Machine       |
-| Ubuntu 24.04 LTS | Operating System      |
-| Docker Engine    | Container Runtime     |
-| Nginx            | Web Server            |
-| SSH              | Remote Administration |
+| Docker Installation | Docker Container |
+|:-------------------:|:----------------:|
+| ![](./screenshots/docker-installation.png) | ![](./screenshots/docker-run.png) |
 
----
-
-## 📚 Key Learnings
-
-* Deploying applications using Docker on a cloud virtual machine.
-* Managing Docker services with `systemctl`.
-* Running containers with port mapping.
-* Verifying container health using `docker ps`.
-* Troubleshooting port conflicts caused by existing services.
-* Publishing a containerized application through an EC2 Public IP.
+| Live Application |
+|:----------------:|
+| ![](./screenshots/application-running.png) |
 
 ---
 
-## ✅ Final Outcome
+# 📚 Key Learnings
 
-Successfully deployed an **Nginx Docker container** on an **Amazon EC2 Ubuntu instance** and exposed it to the internet using port **80**. The deployment was validated through both Docker and the browser, resulting in a fully functional containerized web server running on AWS.
+- Understanding containerized deployments
+- Installing and managing Docker on Linux
+- Running containers with port mapping
+- Publishing applications using Docker
+- Troubleshooting port conflicts
+- Hosting containerized workloads on AWS EC2
 
 ---
 
-⭐ *A simple project that demonstrates the fundamentals of running containerized workloads on cloud infrastructure.*
+<div align="center">
+
+### ⭐ My first containerized deployment on AWS using Docker.
+
+**Containerize → Deploy → Scale 🐳**
+
+</div>

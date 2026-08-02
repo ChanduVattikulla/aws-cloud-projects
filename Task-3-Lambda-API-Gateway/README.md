@@ -1,55 +1,87 @@
-# ⚡ Task-3-Lambda-API-Gateway
+# ⚡ Build a Serverless API with AWS Lambda & API Gateway
 
-![AWS](https://img.shields.io/badge/AWS-Amazon_Web_Services-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+<p align="center">
 
-A lightweight serverless API built with **AWS Lambda** and **API Gateway** that returns a JSON response through a publicly accessible endpoint.
+![AWS](https://img.shields.io/badge/AWS-Lambda-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![API Gateway](https://img.shields.io/badge/API-Gateway-7B42BC?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
----
+</p>
 
-## 🚀 Overview
-
-This project demonstrates how to build and deploy a simple serverless application on AWS without managing any infrastructure.
-
-A Python-based Lambda function processes incoming requests, while API Gateway exposes it through a secure HTTP endpoint. The result is a fully functional REST endpoint that responds with JSON in just a few milliseconds.
-
----
-
-## 🎯 What I Built
-
-- Created an AWS Lambda function using **Python**
-- Deployed the function and validated it with Lambda test events
-- Connected the function to an **HTTP API Gateway**
-- Generated a public endpoint
-- Verified the endpoint by accessing it directly from the browser
+> A hands-on AWS project demonstrating how to build a serverless REST API using **AWS Lambda** and **API Gateway**, returning JSON without managing any servers.
 
 ---
 
-## 🏗 Architecture
+# 🚀 Project Flow
 
-```mermaid
-flowchart LR
-    A[🌐 Client / Browser]
-    B[🚪 API Gateway]
-    C[⚡ AWS Lambda]
-    D[📦 JSON Response]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> A
+```text
+Create Lambda
+      │
+      ▼
+Write Python Function
+      │
+      ▼
+Test with Lambda Events
+      │
+      ▼
+Connect API Gateway
+      │
+      ▼
+Invoke Public Endpoint
 ```
 
 ---
 
-## ⚙️ Project Flow
+# ✨ Highlights
 
-The project started by creating a Lambda function and implementing a small Python handler that returns a JSON response.
+- ✅ Python-based AWS Lambda function
+- ✅ HTTP API Gateway integration
+- ✅ Public REST endpoint
+- ✅ JSON response returned successfully
+- ✅ Built using AWS Free Tier
 
-After deploying the function, it was validated using Lambda's built-in test events to ensure the expected response was returned.
+---
 
-Next, an **HTTP API Gateway** was configured as a trigger, allowing external requests to invoke the Lambda function through a public endpoint.
+# ☁️ AWS Services
 
-Finally, the generated API URL was opened in the browser, successfully returning the expected JSON response.
+| Service | Purpose |
+|:--------:|---------|
+| AWS Lambda | Execute Python code on demand |
+| API Gateway | Expose Lambda as a public API |
+| IAM | Manage execution permissions |
+| CloudWatch | Monitor logs and invocations |
+
+---
+
+# 🏗️ Architecture
+
+```mermaid
+flowchart LR
+
+A[🌐 Client / Browser]
+--> B[🚪 API Gateway]
+--> C[⚡ AWS Lambda]
+--> D[📦 JSON Response]
+--> A
+
+```
+
+---
+
+# 📂 Deployment Workflow
+
+| Step | Description |
+|------|-------------|
+| **1️⃣** | Create an AWS Lambda function |
+| **2️⃣** | Implement the Python handler |
+| **3️⃣** | Test the function using Lambda Test Events |
+| **4️⃣** | Configure API Gateway as a trigger |
+| **5️⃣** | Invoke the public endpoint and verify the JSON response |
+
+---
+
+# 💻 Lambda Response
 
 ```json
 {
@@ -60,45 +92,33 @@ Finally, the generated API URL was opened in the browser, successfully returning
 
 ---
 
-## 📸 Screenshots
+# 📸 Project Gallery
 
-### Lambda Function
-![Lambda Function](./screenshots/lambda-function.png)
+| Lambda Function | API Gateway |
+|:---------------:|:-----------:|
+| ![](./screenshots/lambda-function.png) | ![](./screenshots/api-gateway.png) |
 
-### API Gateway Configuration
-![API Gateway Configuration](./screenshots/api-gateway.png)
-
-### Test Response
-![Test Response](./screenshots/test-response.png)
-
-### Live Endpoint
-![Live Endpoint](./screenshots/live-endpoint.png)
+| Test Response | Live Endpoint |
+|:-------------:|:-------------:|
+| ![](./screenshots/test-response.png) | ![](./screenshots/live-endpoint.png) |
 
 ---
 
-## 🛠 Services Used
+# 📚 Key Learnings
 
-| Service | Purpose |
-|---------|---------|
-| AWS Lambda | Execute Python code without managing servers |
-| Amazon API Gateway | Expose the Lambda function through a public HTTP endpoint |
-| AWS IAM | Manage permissions for the Lambda execution role |
-| Amazon CloudWatch | View execution logs and monitor function invocations |
-
----
-
-## 📚 What I Learned
-
-- The difference between server-based and serverless computing
-- How AWS Lambda executes code only when invoked
-- How API Gateway routes HTTP requests to Lambda
-- How Lambda responses are structured using HTTP status codes and JSON
-- How CloudWatch automatically captures execution logs for debugging
+- Understanding serverless computing
+- Creating AWS Lambda functions
+- Building REST APIs with API Gateway
+- Returning structured JSON responses
+- Using IAM roles for secure execution
+- Monitoring executions with CloudWatch
 
 ---
 
-## ✅ Final Result
+<div align="center">
 
-Successfully deployed a serverless API on AWS that executes a Python Lambda function through API Gateway and returns a JSON response via a publicly accessible endpoint.
+### ⭐ My first serverless application built using AWS Lambda & API Gateway.
 
-This project highlights the fundamentals of event-driven architecture and demonstrates how AWS services can be combined to build scalable APIs without provisioning or maintaining servers.
+**Code → Trigger → Respond ⚡**
+
+</div>
